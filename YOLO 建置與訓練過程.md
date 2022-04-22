@@ -35,7 +35,8 @@
 !sed -i "s/subdivisions=4/subdivisions=8/g" cfg/yolov3-obj.cfg
 !/content/darknet/darknet detector train cfg/obj.data cfg/yolov3-obj.cfg darknet53.conv.74 -dont_show
 ```
-
+預處理檔及訓練過程可以參考
+https://github.com/AlexeyAB/darknet
   
 
 如果需要訓練yolo v4，darknet53.conv.74(預處理)需要換成yolov4.conv.137  
