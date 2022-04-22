@@ -1,0 +1,51 @@
+!git clone https://github.com/AlexeyAB/darknet.git
+#複製darknet系統的原始碼
+
+%cd darknet
+#切換到darknet資料夾內部
+
+!cat Makefile -n
+#查看此資料夾的設定
+#cat：命令查看其設定
+
+!sed -i "s/GPU=0/GPU=1/g" Makefile
+!sed -i "s/CUDNN=0/CUDNN=1/g" Makefile
+!sed -i "s/OPENCV=0/OPENCV=1/g" Makefile
+#預設GPU、CUDNN、OPENCV未使用(=0)，所以用「set」指令將0設為1
+
+!cat Makefile -n
+#查看使否更改成功
+
+!make
+#編譯，使用darknet需要編譯過後才能使用
+
+%cd /content
+#切換到跟目錄
+
+!ln -s "/content/drive/My Drive/Colab Notebooks" /godrive
+#ln -s：將目錄名稱設為虛擬名稱，通常用於簡化Google Drive雲端硬碟目錄
+
+!cp /godrive/maskyolov3_colab.zip /content
+#cp：複製
+#複製壓縮檔到跟目錄下
+
+!unzip maskyolov3_colab.zip
+#解壓縮
+
+
+%cd maskyolov3_colab/
+#進入解壓縮過後的資料夾
+
+!/content/darknet/darknet detector train cfg/obj.data cfg/yolov3-tiny-obj.cfg  darknet53.conv.74 -dont_show
+!/content/darknet/darknet detector train cfg/obj.data cfg/yolov3-tiny-obj.cfg  darknet53.conv.74 -dont_show
+#進行辨識訓練
+
+glob模組：用於檢視資料夾內檔案的一種模組
+os模組：關於作業系統操作呼叫的相關模組，對檔案進行重新命名、刪除等一系列操作
+shutil模組：提供了大量的檔案的高階操作。特別針對檔案拷貝和刪除，主要功能為目錄和檔案操作以及壓縮操作。
+sleep：time模組中的一個函式，延遲時間
+bs4.BeautifulSoup：可以快速解析網頁 HTML 碼，因為標記檔式網頁格式
+
+pip指令：一個以Python電腦程式語言寫成的軟體包管理系統，他可以安裝和管理軟體包，另外不少的軟體包也可以在「Python軟體包索引」
+wget：可以自動下載大量檔案的下載工具
+
